@@ -1,0 +1,28 @@
+{
+  "name": "team_profile_generator",
+  "version": "1.0.0",
+  "description": "A team profile generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daelso/team_profile_generator.git"
+  },
+  "keywords": [
+    "team",
+    "prof",
+    "gen"
+  ],
+  "author": "Chase",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Daelso/team_profile_generator/issues"
+  },
+  "homepage": "https://github.com/Daelso/team_profile_generator#readme",
+  "dependencies": {
+    "inquirer": "^8.1.5",
+    "jest": "^27.2.4"
+  }
+}
