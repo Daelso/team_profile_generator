@@ -1,3 +1,6 @@
+//A big thank you/credit to https://github.com/nicolewallace09/team-profile-generator - Studied this closely to recreate functionality here. Great examples of intertwining OOP and node.js dependencies.
+
+
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHTML = require('./makeHTML');
@@ -47,7 +50,7 @@ function managerPrompt (){
           message: 'Please input the managers email',
           name: 'managerEmail',
           validate: validEmail => {
-            valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(validEmail)   
+            valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(validEmail)    //taken from a Stackoverflow post
             
             if(valid){
                 console.log("Email accepted")
