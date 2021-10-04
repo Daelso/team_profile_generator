@@ -1,8 +1,10 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const util = require("util");
-// const generateMarkdown = require('.js/index.js');
-const writeFileAsync = util.promisify(fs.writeFile);
+const generateHTML = require('./makeHTML');
+
+const Manager = require('../lib/Manager');
+const Engineer = require('../lib/Engineer');
+const Intern = require('../lib/Intern'); 
 
 const teamMembers = [] //an array to store team members for now.
 
@@ -80,8 +82,8 @@ function managerPrompt (){
           },
         ])
         .then(managerInput => {
-            const  { name, id, email, officeNumber } = managerInput; 
-            const manager = new Manager (name, id, email, officeNumber);
+            const  { managerName, managerID, managerEmail, managerOffice } = managerInput; 
+            const manager = new Manager (managerName, managerID, managerEmail, managerOffice);
     
             teamMembers.push(manager); 
             console.log(manager); 
@@ -156,7 +158,7 @@ function managerPrompt (){
                     type: 'input',
                     name: 'github',
                     message: "Please enter the engineer's github username.",
-                    when: (input) => input.role === "Engineer",
+                    when: (input) => input.jobRank === "Engineer",
                     validate: nameInput => {
                         if (nameInput ) {
                             return true;
@@ -170,7 +172,7 @@ function managerPrompt (){
                     type: 'input',
                     name: 'school',
                     message: "Please enter the intern's school",
-                    when: (input) => input.role === "Intern",
+                    when: (input) => input.jobRank === "Intern",
                     validate: nameInput => {
                         if (nameInput) {
                             return true;
@@ -187,17 +189,60 @@ function managerPrompt (){
                     default: false
                 }
 
-                ])}
+                ])
             
-    
+            
+                .then(employeeData => {
+                    // data for employee types 
+            
+                    let { employeeName, employeeID, employeeEmail, jobRank, github, school, addAnother } = employeeData; 
+                    let employee; 
+            
+                    if (jobRank === "Engineer") {
+                        employee = new Engineer (employeeName, employeeID, employeeEmail, github);
+            
+                        console.log(employee);
+            
+                    } else if (jobRank === "Intern") {
+                        employee = new Intern (employeeName, employeeID, employeeEmail, school);
+            
+                        console.log(employee);
+                    }
+            
+                    teamMembers.push(employee); 
+            
+                    if (addAnother) {
+                        return employeePrompt(teamMembers); 
+                    } else {
+                        return teamMembers;
+                    }
+                })            
+            
+            
+            
+            }
+            
+            const writeFile = data => {
+                fs.writeFile('../sample/index.html', data, err => {
+                    // if there is an error 
+                    if (err) {
+                        console.log(err);
+                        return;
+                    // when the profile has been created 
+                    } else {
+                        console.log("Your team profile has been successfully created! Please check out the index.html")
+                    }
+                })
+            }; 
 
-        async function init() {
-
-            var manager = await managerPrompt()
-            var employee = await employeePrompt()
-            console.log()
-        
-        }
-
-
-     init()   
+            managerPrompt()
+            .then(employeePrompt)
+            .then(teamMembers => {
+              return generateHTML(teamMembers);
+            })
+            .then(pageHTML => {
+              return writeFile(pageHTML);
+            })
+            .catch(err => {
+           console.log(err);
+            }); 
