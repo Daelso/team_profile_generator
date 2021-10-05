@@ -8,7 +8,8 @@
 
 This is another project created to better understand node.js, its various available dependencies and to incorporate OOP. This project required inquirer and the newly learned skill of creating object constructors and working with them.  I was greatly assisted by studying previous examples of this found here: https://github.com/nicolewallace09/team-profile-generator
 
-[![Demo video here](https://i.gyazo.com/2de6f684875dea173fbcc39fe70213ef.png)](https://www.youtube.com/watch?v=bCvQ8fNOwxA)
+Click the image for a demo video!
+[![Demo video here](https://i.gyazo.com/2de6f684875dea173fbcc39fe70213ef.png)](https://www.youtube.com/watch?v=4EkssEYr5vA)
 
 
 ## Table of Contents
