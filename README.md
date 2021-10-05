@@ -26,7 +26,7 @@ This requires both node.js, jest and  inquirer. Open the terminal and begin with
 
 ## Usage:
 
-To quickly create a team tracking page that includes, employee IDs, ranks, email. For engineers and interns this can include github links or schools.
+To quickly create a team tracking page that includes, employee IDs, ranks, email. For engineers and interns this can include github links or schools. To run the program type ```node index.js``` - If you would like to ensure everything is in working order, you can run ```npm run test``` to make sure you are good to go.
 
 ## Contributing:
 
