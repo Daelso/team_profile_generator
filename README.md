@@ -33,6 +33,10 @@ To quickly create a team tracking page that includes, employee IDs, ranks, email
 
 Want to contriubte? Here's the guidelines: None at the moment!
 
+## Tests
+
+Try a test with ```npm test```
+
 
 ## License:
 
