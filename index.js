@@ -3,11 +3,11 @@
 
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateHTML = require('./makeHTML');
+const generateHTML = require('./js/makeHTML');
 
-const Manager = require('../lib/Manager');
-const Engineer = require('../lib/Engineer');
-const Intern = require('../lib/Intern'); 
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern'); 
 
 const teamMembers = [] //an array to store team members for now.
 
